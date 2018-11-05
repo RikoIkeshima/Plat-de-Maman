@@ -1,0 +1,2 @@
+class BoardDetail < ApplicationRecord
+end
