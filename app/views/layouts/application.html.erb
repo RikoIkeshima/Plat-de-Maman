@@ -14,19 +14,20 @@
   <body>
     <header>
       <div class="header-logo">
-        <% if @current_user %>
+        <% if  %>
           <%= link_to("Plat de Maman", "/posts/index") %>
         <% else %>
           <%= link_to("Plat de Maman", "/") %>
         <% end %>
       </div>
       <ul class="header-menus">
-        <% if @current_user %>
+        <% if user_signed_in? %>
+        
           <li>
-            <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
+            <%= link_to("#{User.find_by(id: current_user.id).family_name}#{User.find_by(id: current_user.id).first_name}", "/users/#{current_user.id}") %>
           </li>
           <li>
-            <%= link_to("ブログ一覧", "/posts/index") %>
+            <%= link_to("ブログ一覧", "/posts") %>
           </li>
           <li>
             <%= link_to("新規投稿", "/posts/new") %>
@@ -45,9 +46,7 @@
           <li>
             <%= link_to("ログイン", "/users/sign_in") %>
           </li>
-          <li>
-            <%= link_to("ログアウト", "/users/sign_out", {method: :delete}) %>
-          </li>
+          
         <% end %>
       </ul>
     </header>

@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :authenticate_user!
 
   # GET /resource/sign_up
   # def new
@@ -11,26 +12,43 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    logger.debug("--------------------------- user_type = #{params[:user][:user_type]}")
-    logger.debug("--------------------------- user_type = #{params[:user][:email]}")
-    @user = User.new(email: params[:user][:email],
-                     user_type: params[:user][:user_type],
-                     password: params[:user][:password])
+    super
+    @user = User.last
+    @user.family_name = params[:user][:family_name]
+    @user.first_name = params[:user][:first_name]
+    @user.user_type = params[:user][:user_type]
+    @user.save
+    # logger.debug("--------------------------- user_type = #{params[:user][:user_type]}")
+    # logger.debug("--------------------------- user_type = #{params[:user][:email]}")
+    # @user = User.new(email: params[:user][:email],
+    #                 user_type: params[:user][:user_type],
+    #                 password: params[:user][:password])
                      
-    if @user.save 
-      flash[:notice] = "success"
+    # if @user.save
+    #   flash[:notice] = "success"
+
       
+      # logger.debug("======================== current_user.id = #{current_user.id}")
+      # redirect_to edit_user_registration_path
       
-    else 
-      render ("users/signup")
-    end
+    # else 
+    #   render ("users/signup")
+    # end
     
   end
-
-
-  def after_sign_up_path_for(resource)
-    "/users/edit"
+  
+  def edit
+    logger.debug("======================= edit at registrations")
   end
+
+
+ 
+  protected
+ 
+  def after_sign_up_path_for(resource)
+     edit_user_registration_path
+  end
+
   # GET /resource/edit
   # def edit
   #   super
@@ -76,4 +94,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  
+  
+
 end

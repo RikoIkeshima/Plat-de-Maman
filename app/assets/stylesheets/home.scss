@@ -1,6 +1,8 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
 /* reset ================================ */
 * {
   box-sizing: border-box;
@@ -45,22 +47,25 @@ a {
 /* ヘッダー ================================ */
 header {
   height: 64px;
-  position: absolute;
+  position: fixed;
   z-index: 1;
   width: 100%;
+  background-color:#D2B48C;
+  min-width:960px;
+  z-index:10;
 }
 
 .header-logo {
   float: left;
   padding-left: 20px;
-  color:#cc9966 ;
-  font-size: 22px;
+  color:white ;
+  font-size: 25px;
   line-height: 64px;
 }
 
 .header-logo a{
-  color: #cc9966;
-  font-size: 22px;
+  color: #FAF0E6;
+  font-size: 25px;
 }
 
 .header-menus {
@@ -72,14 +77,14 @@ header {
   float: left;
   line-height: 64px;
   font-size: 13px;
-  color: #cc9966;
+  color: #FAF0E6;
   padding-left: 15px;
 }
 
 .header-menus a {
   float: left;
   font-size: 13px;
-  color: #cc9966;
+  color: #FAF0E6;
 }
 
 .header-menus .fa {
@@ -112,4 +117,3 @@ header {
 }
 
 
-/* 初めての方へ ================================ */

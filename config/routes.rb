@@ -5,7 +5,7 @@ Rails.application.routes.draw do
    }
   
   resources :posts
-  resources :post_details , :only => [:new, :create, :edit, :update, :destroy]
+  #resources :post_details , :only => [:new, :create, :edit, :update, :destroy]
   resources :chats
   resources :likes
   resources :users , :only => [:show, :index]

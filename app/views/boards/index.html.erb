@@ -1,2 +1,9 @@
-<h1>Lessons</h1>
-<hr>
+<div class="main boards-index">
+  <div class="container">
+    <% @boards.each do |board| %>
+      <div class="boards-index-item">
+        <%= board.content %>
+      </div>
+    <% end %>
+  </div>
+</div>
